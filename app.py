@@ -9,9 +9,9 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 from tkinter import ttk
 
-from .clipboard import get_clipboard_text, set_clipboard_text
-from .hotkeys import HotkeyManager, send_ctrl_v_best_effort, to_pynput_combo
-from .storage import Config, load_config, load_history, make_entry, save_config, save_history
+from clipboard import get_clipboard_text, set_clipboard_text
+from hotkeys import HotkeyManager, send_ctrl_v_best_effort, to_pynput_combo
+from storage import Config, load_config, load_history, make_entry, save_config, save_history
 
 
 class Copy2App(ttk.Frame):
