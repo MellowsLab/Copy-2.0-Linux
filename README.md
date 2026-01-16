@@ -28,7 +28,7 @@ This is a Linux-first rebuild of your original clipboard tool in `Copy 2.0.py`.
 ## One-command install
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/MellowsLab/Copy-2.0-Linux/main/scripts/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/MellowsLab/Copy-2.0-Linux/main/install.sh)"
 
 ```
 
