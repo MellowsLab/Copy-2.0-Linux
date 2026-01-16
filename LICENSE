@@ -1,21 +1,53 @@
-MIT License
+COPY 2.0 PERSONAL USE LICENSE (NO REDISTRIBUTION / NO RESALE)
 
-Copyright (c) 2026 Ethan
+Copyright (c) 2026 MellowsLab
+All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+IMPORTANT: THIS SOFTWARE IS LICENSED, NOT SOLD.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1) DEFINITIONS
+“Software” means the Copy 2.0 application, including any executables, source code, scripts,
+assets, documentation, and any updates or modified versions provided by the Licensor.
+“Licensor” means MellowsLab.
+“You” means the individual using the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+2) GRANT OF LICENSE (PERSONAL USE ONLY)
+Subject to full compliance with this License, Licensor grants You a limited, revocable,
+non-exclusive, non-transferable license to install and use the Software solely for
+Your personal, private, non-commercial use on devices You own or control.
+
+3) RESTRICTIONS
+You may NOT, and may not permit others to:
+a) Redistribute, share, publish, upload, or otherwise make the Software available to any third party,
+   in whole or in part, whether for free or for a fee (including mirrors, bundles, repacks, or app stores).
+b) Sell, rent, lease, sublicense, monetize, or commercially exploit the Software in any way.
+c) Use the Software in a commercial environment or for commercial purposes (including internal business use).
+d) Modify, adapt, translate, reverse engineer, decompile, or create derivative works based on the Software,
+   except to the extent such restriction is prohibited by applicable law.
+e) Remove or alter any copyright, branding, notices, or attributions included with the Software.
+
+4) OWNERSHIP
+The Software is and remains the exclusive property of the Licensor. No ownership rights are
+transferred under this License.
+
+5) TERMINATION
+This License is effective until terminated. It terminates automatically if You violate any term.
+Upon termination, You must immediately stop using the Software and delete all copies in Your
+possession or control.
+
+6) NO WARRANTY
+THE SOFTWARE IS PROVIDED “AS IS” AND “AS AVAILABLE”, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, AND NON-INFRINGEMENT. YOU USE THE SOFTWARE AT YOUR OWN RISK.
+
+7) LIMITATION OF LIABILITY
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY
+INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF DATA,
+PROFITS, OR REVENUE, ARISING FROM OR RELATED TO THE SOFTWARE OR THIS LICENSE.
+
+8) GOVERNING LAW
+This License is governed by the laws of the Republic of South Africa, without regard to conflict
+of law principles.
+
+9) CONTACT
+For licensing inquiries, contact MellowsLab.
