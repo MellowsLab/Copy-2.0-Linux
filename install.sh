@@ -1,12 +1,14 @@
+\
 #!/usr/bin/env bash
 set -euo pipefail
 
 APP_NAME="copy2"
 REPO_OWNER="MellowsLab"
 REPO_NAME="Copy-2.0-Linux"
+
 INSTALL_DIR="${HOME}/.local/share/copy2"
-VENV_DIR="${INSTALL_DIR}/venv"
 APP_DIR="${INSTALL_DIR}/app"
+VENV_DIR="${INSTALL_DIR}/venv"
 BIN_DIR="${HOME}/.local/bin"
 LAUNCHER="${BIN_DIR}/copy2"
 
@@ -17,10 +19,8 @@ warn() { printf '%s\n' "[WARN] $*"; }
 err()  { printf '%s\n' "[ERROR] $*" >&2; }
 
 install_system_deps() {
-  # Tkinter is usually a system package on many distros.
-  # Clipboard tools vary by X11/Wayland.
   if need_cmd apt-get; then
-    info "Detected apt-get (Debian/Ubuntu). Installing system deps..."
+    info "Detected apt-get (Debian/Ubuntu/Kali). Installing system deps..."
     sudo apt-get update
     sudo apt-get install -y python3 python3-venv python3-tk xclip xsel wl-clipboard curl git
   elif need_cmd dnf; then
@@ -43,25 +43,41 @@ ensure_dirs() {
 }
 
 fetch_app_files() {
-  # Requires either git or curl+tar. Prefer git if available.
+  # Repo layout is ROOT-BASED (no app/ folder in repo).
   if need_cmd git; then
     info "Fetching latest code via git..."
     tmpdir="$(mktemp -d)"
     git clone --depth 1 "https://github.com/${REPO_OWNER}/${REPO_NAME}.git" "${tmpdir}/${REPO_NAME}"
-    cp -r "${tmpdir}/${REPO_NAME}/app/." "${APP_DIR}/"
-    rm -rf "${tmpdir}"
+    src="${tmpdir}/${REPO_NAME}"
   else
     info "Fetching latest code via curl..."
     tmpdir="$(mktemp -d)"
     curl -fsSL "https://github.com/${REPO_OWNER}/${REPO_NAME}/archive/refs/heads/main.tar.gz" -o "${tmpdir}/src.tar.gz"
     tar -xzf "${tmpdir}/src.tar.gz" -C "${tmpdir}"
-    srcdir="${tmpdir}/${REPO_NAME}-main"
-    cp -r "${srcdir}/app/." "${APP_DIR}/"
-    rm -rf "${tmpdir}"
+    src="${tmpdir}/${REPO_NAME}-main"
   fi
 
-  if [[ ! -f "${APP_DIR}/copy2_gui.py" ]]; then
-    err "Expected ${APP_DIR}/copy2_gui.py not found. Check your repo structure."
+  # Required files
+  cp -f "${src}/run_copy2.py" "${APP_DIR}/"
+  cp -f "${src}/requirements.txt" "${APP_DIR}/"
+
+  # Optional support modules
+  for f in app.py clipboard.py hotkeys.py storage.py __init__.py; do
+    if [[ -f "${src}/${f}" ]]; then
+      cp -f "${src}/${f}" "${APP_DIR}/"
+    fi
+  done
+
+  # Optional assets
+  if [[ -d "${src}/assets" ]]; then
+    rm -rf "${APP_DIR}/assets"
+    cp -r "${src}/assets" "${APP_DIR}/assets"
+  fi
+
+  rm -rf "${tmpdir}"
+
+  if [[ ! -f "${APP_DIR}/run_copy2.py" ]]; then
+    err "Expected ${APP_DIR}/run_copy2.py not found. Check repo structure."
     exit 1
   fi
 }
@@ -70,11 +86,7 @@ setup_venv() {
   info "Setting up Python virtual environment..."
   python3 -m venv "${VENV_DIR}"
   "${VENV_DIR}/bin/python" -m pip install --upgrade pip
-
-  # Python deps. Keep this minimal; add more only if the app needs them.
-  # - pyperclip: clipboard access (fallback if xclip/wl-clipboard missing)
-  # - pynput: optional hotkeys/input (X11 best effort; often limited on Wayland)
-  "${VENV_DIR}/bin/pip" install --upgrade pyperclip pynput
+  "${VENV_DIR}/bin/pip" install -r "${APP_DIR}/requirements.txt"
 }
 
 write_launcher() {
@@ -82,7 +94,7 @@ write_launcher() {
   cat > "${LAUNCHER}" <<EOF
 #!/usr/bin/env bash
 set -e
-exec "${VENV_DIR}/bin/python" "${APP_DIR}/copy2_gui.py" "\$@"
+exec "${VENV_DIR}/bin/python" "${APP_DIR}/run_copy2.py" "\$@"
 EOF
   chmod +x "${LAUNCHER}"
 }
