@@ -143,6 +143,8 @@ sudo apt-get install -y xclip xsel
 ### Immutable distro install fails
 That is expected on OSTree systems. Use the **Distrobox/Toolbox** instructions above, or install dependencies via your distro’s immutable workflow.
 
+### Discord Link for support and suggestions
+- `https://discord.gg/aR7tPND2Jj`
 ---
 
 ## License
